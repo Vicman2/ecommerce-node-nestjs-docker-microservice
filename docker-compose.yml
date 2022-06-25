@@ -1,0 +1,15 @@
+version: '3'
+services:
+ user_service:
+  container_name: user_service
+  image: user
+  ports:
+   - "5151:5151"
+  volumes:
+   - "$PWD/user-service/node_modules:/app/node_modules"
+  build:
+   context: user-service
+  networks:
+   - net
+networks:
+ net:
