@@ -6,9 +6,18 @@ services:
   ports:
    - "5151:5151"
   volumes:
-   - "$PWD/user-service/node_modules:/app/node_modules"
+   - "$PWD/user_service/node_modules:/app/node_modules"
   build:
-   context: user-service
+   context: user_service
+  networks:
+   - net
+ api_gateway:
+  container_name: nginx
+  image: nginx
+  ports:
+   - "8084:80"
+  build:
+   context: api_gateway
   networks:
    - net
 networks:
